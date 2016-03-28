@@ -1,0 +1,135 @@
+﻿
+.tabs-container {
+    padding-top: 10px;
+    margin: 50px;
+}
+
+.tab {
+    border-color: #1abc9c;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.tabsmenucontainer{
+    padding-bottom:5px;
+    border-bottom: 1px solid grey;
+    border-radius:20px;
+}
+
+.tab-content {
+    max-width: none;
+    width: 100%;
+    clear: both;
+    float: left;
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    border: 1px solid grey;
+    display: none;
+    border-radius:20px;
+}
+
+.tabs-menu {
+    height: 50px;
+    clear: both;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-weight: bold;
+    
+}
+
+    .tabs-menu li {
+        height: 50px;
+        line-height: 30px;
+        float: left;
+        margin-right: 10px;
+        background-color: white;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        font-weight: bold;
+    }
+
+        .tabs-menu li.current {
+            position: relative;
+            color: #1abc9c;
+            background-color: white;
+            border-bottom: 1px solid #fff;
+            z-index: 5;
+        }
+
+        .tabs-menu li a {
+            padding-right: 10px;
+            text-transform: uppercase;
+            color: #8a97a0;
+            text-decoration: none;
+        }
+
+    .tabs-menu .current a {
+        color: white;
+        font-family: 'Lato', Calibri, Arial, sans-serif;
+        font-size: 16pt;
+        background: #1abc9c;
+        color: #fff;
+        height: 30px;
+        width: 170px;
+        display: inline-block;
+        font-size: 14pt;
+        margin-right: 4px;
+        line-height: 30px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+        border-radius: 15px 15px 15px 0px;
+    }
+
+#tab-1 {
+    display: block;
+    font-weight: bold;
+}
+
+.imgcss {
+    float: right;
+}
+
+img {
+    border: 3px solid grey;
+}
+
+.headers {
+    color: crimson;
+}
+
+.profilecontent {
+    width: auto;
+}
+
+.icon {
+    color: black;
+    font-size: 15pt;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.button {
+    position: relative;
+    color: #FFF;
+    margin: 0 auto;
+    background: lightcoral;
+    font-size: 14px;
+    text-align: center;
+    font-style: normal;
+    border: 1px solid crimson;
+    border-radius: 10px;
+    border-width: 1px 1px 3px;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    box-shadow: 0 0 10px lightcoral;
+    width: auto;
+}
+
+.headerlabel {
+    font-weight: bold;
+    width: 25%;
+}
+
+table {
+    width: 100%;
+}

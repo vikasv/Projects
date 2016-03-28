@@ -1,0 +1,314 @@
+﻿<div class=" demo-2 tabs-container profilepage" ng-controller="profilecontroller">
+    <div class="tabsmenucontainer">
+        <header class="">
+            <div class="codrops-demos inner">
+                <ul class="nav nav-pills tabs-menu" style="list-style:none">
+                    <li class="current"><a href="#tab-1">About Me</a></li>
+                    <li><a href="#tab-2">History</a></li>
+                    <li><a href="#tab-3">People</a></li>
+                    <li><a href="#tab-4">Settings</a></li>
+                </ul>
+            </div>
+        </header>
+
+    </div>
+    <div class="tab">
+
+        <div id="tab-1" class="tab-content">
+            <div class="imgcss">
+
+                <img src="{{currentUser.profilepicture}}" class="profileimage" height="150" weight="150" ng-click="showinputbox = true" />
+                <input type="text" class="picture" ng-model="newprofilePicture" placeholder="Image url..." ng-show="showinputbox==true">
+                <input type="button" class="button" id="okbutton0" ng-click="uploadImageURL()" ng-show="showinputbox==true" value="Change" />
+
+
+            </div>
+
+            <div>
+                <div class="profilecontent2">
+                    <p>
+                        <h3 class="headers">
+                            Your Messages:
+                        </h3>
+                        <ul>
+                            <li ng-repeat="msg in messagesarray track by $index" style="display:block">
+                                <h4 class="message">{{msg}}</h4>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="profilecontent1">
+                    <p>
+                        <h3 class="headers">
+                            This is me:<span class="icon icon-pencil" style="display:inline-block" id="personalmsg"></span>
+                            <span>
+                                <input type="button" class="button" style="display:none" id="okbutton1" ng-click="doneEditing1()" value="Ok" />
+                            </span>
+                        </h3>
+                    <p id="personalmsgpara" ng-model="personalmessage" ng-bind="currentUser.personalmessage">
+                    </p>
+
+                    </p>
+                </div>
+
+            </div>
+            <div style="position:relative;bottom:0">
+                {{showmessage}}
+                <input type="button" id="savebutton" class="button" ng-click="updateText(currentUser)" ng-show="showbutton==true" value="Save" />
+            </div>
+        </div>
+
+        <div id="tab-2" class="tab-content">
+            <fieldset>
+                <legend>
+                    <span class="messagecss">Previous rides</span>
+                </legend>
+                <div class="historytable">
+                    <ul ng-repeat="ride in rides | orderBy : '-created'">
+                        <li><b>Type - <span>{{currentUser.username==ride.username?'Owner':'Shared'}}</span></b></li>
+                        <li>${{ride.cost/ride.personcountfilled|number:2}}</li>
+                        <li><b>Ride start date |</b>{{ride.startdate | date:'MM/dd/yyyy'}}</li>
+                        <li><b>Ride start time |</b>{{ride.starttime | date:'HH:mm a'}}</li>
+                        <li><b>Source |</b>{{ride.source}}</li>
+                        <li><b>Destination |</b>{{ride.destination}}</li>
+                        <li><b>Total persons |</b>{{ride.personcount}}</li>
+                        <li><b>Persons filled |</b>{{ride.personcountfilled}}</li>
+                        <li><b>proximity |</b>{{ride.proximity}}</li>
+                        <li><b>Ride created on |</b>{{ride.created | date:'MM/dd/yyyy HH:mm a'}}</li>
+
+                        <li></li>
+                        <li>
+                            <input type="button" value="Edit" ng-show="currentUser.username==ride.username" ng-click="editInfo(ride)" class="ride-modal-open viewbutton" href="#modal1" />
+                            <input type="button" href="" value="You can only drop" ng-show="currentUser.username!=ride.username" ng-click="removeFromRide(ride)" class="viewbutton">
+
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!--<table class="history">
+                    <thead>
+                        <tr>
+                            <td>Date Added</td>
+                            <td>Source</td>
+                            <td>Destination</td>
+                            <td>Persons required</td>
+                            <td>Proximity</td>
+                            <td>Cost</td>
+                            <td>Type</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ride in rides | orderBy : '-created'">
+                            <td>{{ride.created | date:'MM/dd/yyyy HH:mm a'}}></td>
+                            <td>{{ride.source}}</td>
+                            <td>{{ride.destination}}</td>
+                            <td>{{ride.personcount}}</td>
+                            <td>{{ride.proximity}}</td>
+                            <td>{{ride.cost}}</td>
+                            <td></td>
+                            <td>
+                                <span class="icon icon-pencil" style="display:inline-block" id="userinfo"></span>
+                                <input type="button" class="button" style="display:none" id="okbuttonuser" ng-click="editrideinfo()" value="Ok" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>-->
+            </fieldset>
+        </div>
+        <div id="tab-3" class="tab-content">
+            <div>
+                <div ng-repeat="person in personsshared track by $index" class="userdiv">
+                    <img ng-src="{{person.profilepicture}}" alt="Not found" class="image" />
+                    <span class="username">{{person.username}}</span>
+                    <input type="button" ng-click="getUserProfile(person.username)" class="easy-modal-open viewbutton" href="#modal2" value="View" />
+                </div>
+            </div>
+
+        </div>
+        <div id="tab-4" class="tab-content ">
+            <fieldset>
+                <legend>
+                    <span class="messagecss">user information</span>
+                    <span class="icon icon-pencil" id="userinfo"></span>
+                    <span>
+                        <input type="button" class="button okbutton" id="okbuttonuser" ng-click="edituserinfo()" value="Ok" />
+                    </span>
+                </legend>
+                <table>
+                    <tr>
+                        <td class="headerlabel"><label>Name</label></td>
+                        <td class="content"><input id="name" type="text" ng-model="currentUser.name" ng-bind="currentUser.name" disabled="disabled" /></tdclass>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>Username</label></td>
+                        <td class="content"><input id="username" ng-model="currentUser.username" ng-bind="currentUser.username" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>Email</label></td>
+                        <td class="content"><input id="email" ng-model="currentUser.email" ng-bind="currentUser.email" disabled="disabled" type="text" /></td>
+                    </tr>
+                </table>
+
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <span class="messagecss">Car information</span>
+                    <span class="icon icon-pencil" id="carinfo"></span>
+                    <span>
+                        <input type="button" class="button okbutton" id="okbuttoncar" ng-click="editcarinfo()" value="Ok" />
+                    </span>
+                </legend>
+                <table>
+                    <tr>
+                        <td class="headerlabel"><label>You want to:</label></td>
+                        <td class="content"><input id="usertype" ng-model="currentUser.usertype" ng-bind="currentUser.usertype" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>Car reg number</label></td>
+                        <td class="content"><input id="carnumber" ng-model="currentUser.carnumber" ng-bind="currentUser.carnumber" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>Car Model</label></td>
+                        <td class="content"><input id="carmodel" ng-model="currentUser.carmodel" ng-bind="currentUser.carmodel" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>Car Capacity</label></td>
+                        <td class="content"><input id="carcapacity" ng-model="currentUser.carcapacity" ng-bind="currentUser.carcapacity" disabled="disabled" type="text" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <span class="messagecss">Address Information</span>
+                    <span class="icon icon-pencil" id="addressinfo"></span>
+                    <span>
+                        <input type="button" class="button okbutton" id="okbuttonaddress" ng-click="editaddressinfo()" value="Ok" />
+                    </span>
+                </legend>
+                <table>
+                    <tr>
+                        <td class="headerlabel"><label>Address Line 1</label></td>
+                        <td class="content"><input id="address1" ng-model="currentUser.address1" ng-bind="currentUser.address1" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>Address Line 2</label></td>
+                        <td class="content"><input id="address2" ng-model="currentUser.address2" ng-bind="currentUser.address2" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>City</label></td>
+                        <td class="content"><input id="city" ng-model="currentUser.city" ng-bind="currentUser.city" disabled="disabled" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="headerlabel"><label>State</label></td>
+                        <td class="content"><input id="state" ng-model="currentUser.state" ng-bind="currentUser.state" disabled="disabled" type="text" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <div style="position:relative;bottom:0">
+                <input type="button" id="savebutton2" ng-click="updateInfo(currentUser)" class="button okbutton" value="Save" />
+                <span>{{saved}}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ride-modal" id="modal1">
+        <div class="ride-modal-inner">
+            <div class="formcsssearchride">
+                <form>
+
+                    <p ng-show="updateride"><span class="messagecss error">Oops!</span>{{updateride}} </p>
+                    <h2>Source - {{editride.source}}</h2>
+                    <h2>Destination - {{editride.destination}}</h2>
+                    <fieldset>
+                        <div>
+                            <div>
+                                <label for="to">Start time</label>
+                                <input type="date" id="date" class="startdate" placeholder="Scheduled start time" ng-model="editride.startdate" />
+                                <input type="time" id="time" class="starttime" placeholder="Scheduled start time" ng-model="editride.starttime" />
+
+                            </div>
+                            <div>
+                                <label for="from">Number of Persons looking for'</label>
+                                <input type="text" id="personcount" class="personcount" placeholder="e.g. 3" ng-model="editride.personcount" />
+                            </div>
+                            <div>
+                                <label for="to">Total anticipated cost (together)</label>
+                                <input type="number" id="cost" class="cost" placeholder="cost in dollars" ng-model="editride.cost" />
+                            </div>
+                            <label for="contact">Contact Option:</label>
+
+                            <select ng-model="editride.contact" class="contact">
+                                <option value="email">Email</option>
+                                <option value="mobile">Mobile</option>
+                            </select>
+                            <input type="text" class="contactdetails" ng-model="editride.contactdetails" ng-show="editride.contact" placeholder="Contact details *">
+
+                        </div>
+                        <input type="submit" value="Update Info" href="#" ng-click="updateRideInfo(editride)" />
+                        <input type="button" class="viewbutton ride-modal-close" value="close" />
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="easy-modal" id="modal2">
+        <div class="easy-modal-inner">
+            <h2>{{viewuser.username}}'s Profile</h2>
+            <table class=".history">
+                <tbody>
+                    <tr>
+                        <td class="head">
+                            {{viewusererror}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="head">Name</td>
+                        <td>{{viewuser.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Address</td>
+                        <td>{{viewuser.address1}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{viewuser.address2}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{viewuser.city}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{viewuser.state}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Email ID</td>
+                        <td>{{viewuser.email}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">More about the user</td>
+                        <td>{{viewuser.personalmessage}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Car model</td>
+                        <td>{{viewuser.carmodel}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="button easy-modal-close" value="close" />
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+

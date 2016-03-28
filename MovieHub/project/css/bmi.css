@@ -1,0 +1,284 @@
+﻿
+
+
+body {
+    font-family: Verdana;
+}
+
+
+body {
+      
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0px;
+    width: auto;
+    margin-top: 0px;
+}
+
+@media screen and (min-width: 1190px) {
+
+    #result {
+        float: left;
+        color: purple;
+        font-family: Arial;
+        background-color: #F0F3FC;
+    }
+
+    #result-value {
+        color: purple;
+        
+        font-family: Arial;
+        background-color: #F0F3FC;
+    }
+
+    .bmi-text {
+        float: left;
+        color: rgb(154, 176, 160);
+        font-family: Arial;
+        text-justify: auto;
+    }
+
+    .report-val {
+        float: right;
+        color: rgb(214, 209, 127);
+        font-family: Arial;
+    }
+
+    #compare-bmi {
+        background-color: purple;
+    }
+
+    .highlight {
+        text-shadow: 0 0 10px;
+        color: purple;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    .bmi-container input[type="text"] {
+        width: auto;
+        height: 20px;
+        font-family: Arial;
+        margin: 10px 0;
+        border: 2px solid #f2f0f2;
+        outline: none;
+        padding-left: 10px;
+        background-color: white;
+        box-shadow: 0 0 1px;
+    }
+
+    .bmi-container input[type="button"] {
+        width: 55%;
+        margin: 10px 0;
+        height: 40px;
+        font-family: Arial;
+        background-color: gray;
+        text-align: center;
+        text-align: center;
+        color: black;
+    }
+
+    p {
+        margin-bottom: -10px;
+    }
+
+    .bmiDesc {
+        float: left;
+        width: 450px;
+    }
+
+   
+
+    .bmi-finder-panel {
+        
+        
+        background-color: rgb(33, 29, 37);
+        
+        width: 450px;
+        padding: 2px;
+        position: inherit;
+        float: right;
+        border-radius: 8px;
+        margin-right:24px;  
+    }
+
+   
+}
+
+
+@media screen and (max-width: 1189px) {
+
+
+     #result {
+        float: left;
+        color: purple;
+        font-family: Arial;
+        background-color: #F0F3FC;
+    }
+
+    #result-value {
+        color: purple;
+        font-family: Arial;
+        background-color: #F0F3FC;
+    }
+
+    .bmi-text {
+        float: left;
+        color: rgb(154, 176, 160);
+        font-family: Arial;
+        text-justify: auto;
+    }
+
+    .report-val {
+        float: right;
+        color: green;
+        font-family: Arial;
+    }
+
+    #compare-bmi {
+        background-color: purple;
+    }
+
+    .highlight {
+        text-shadow: 0 0 10px;
+        color: purple;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    .bmi-container input[type="text"] {
+        width: auto;
+        height: 20px;
+        font-family: Arial;
+        margin: 10px 0;
+        border: 2px solid #f2f0f2;
+        outline: none;
+        padding-left: 10px;
+        background-color: white;
+        box-shadow: 0 0 1px;
+    }
+
+    .bmi-container input[type="button"] {
+        width: 55%;
+        margin: 10px 0;
+        height: 40px;
+        font-family: Arial;
+        background-color: gray;
+        text-align: center;
+        text-align: center;
+        color: black;
+    }
+
+    p {
+        margin-bottom: -10px;
+    }
+
+    .bmiDesc {
+        float: left;
+        width: 450px;
+    }
+
+   
+
+    .bmi-finder-panel {
+        background-color: rgb(33, 29, 37);
+        width: 450px;
+        padding: 2px;
+        position: inherit;
+        float: right;
+        border-radius: 8px;
+        margin-right:24px;  
+    }
+}
+
+@media screen and (max-width:370px) {
+
+     #result {
+        float: left;
+        color: purple;
+        font-family: Arial;
+        background-color: #F0F3FC;
+    }
+
+    #result-value {
+        color: purple;
+        font-family: Arial;
+        background-color: #F0F3FC;
+    }
+
+    .bmi-text {
+        float: left;
+        color: blue;
+        font-family: Arial;
+        text-justify: auto;
+    }
+
+    .report-val {
+        float: right;
+        color: green;
+        font-family: Arial;
+    }
+
+    #compare-bmi {
+        background-color: purple;
+    }
+
+    .highlight {
+        text-shadow: 0 0 10px;
+        color: purple;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    .bmi-container input[type="text"] {
+        width: auto;
+        height: 20px;
+        font-family: Arial;
+        margin: 10px 0;
+        border: 2px solid #f2f0f2;
+        outline: none;
+        padding-left: 10px;
+        background-color: white;
+        box-shadow: 0 0 1px;
+    }
+
+    .bmi-container input[type="button"] {
+        width: 55%;
+        margin: 10px 0;
+        height: 40px;
+        font-family: Arial;
+        background-color: gray;
+        text-align: center;
+        text-align: center;
+        color: black;
+    }
+
+    p {
+        margin-bottom: -10px;
+    }
+
+    .bmiDesc {
+        float: left;
+        width: 450px;
+    }
+
+   
+
+    .bmi-finder-panel {
+        background-color: rgb(33, 29, 37);
+        width: 310px;
+        padding: 2px;
+        position: inherit;
+        float: right;
+        border-radius: 8px;
+        margin-right:14px; 
+        margin-bottom:5px; 
+    }
+}

@@ -1,0 +1,62 @@
+﻿
+<div ng-controller="pollutioncontroller">
+    <div class="formcsssearchride">
+        <form>
+            <p ng-show="pollutionfail"><span class="messagecss error">Oops!</span>{{pollutionfail}} </p>
+            <fieldset>
+                <h3 style="font-size:18pt;">Harmful effects of Pollution that will scare you! Enter the details below to know</h3>
+                <legend><span class="messagecss"> Route info</span> </legend>
+
+                <div>
+                    <div class="pollutionform">
+                        <div>
+                            <label for="from">Source</label>
+                            <input type="text" id="from" ng-model="pollution.source" />
+                        </div>
+                        <div>
+                            <label for="to">Destination</label>
+                            <input type="text" id="to" ng-model="pollution.destination" />
+                        </div>
+                        <input type="button" href="#" class="btn show" ng-click="calculatePollution(pollution)" style="background-color:lightseagreen" value="Show me!" />
+                    </div>
+
+                    <div class="pollutiondiv slide-container" ng-hide="!pollutionsuccess" ng-animate="'slide'">
+                        <ul class=".pollutionrecord">
+                            <li>
+                                <h2 class="message"> For the journey you wish to travel the statistics are</h2>
+                            </li>
+                            <li>
+                                <b>Total travel distance -&nbsp;</b>{{distance |number:2}} KM
+                            </li>
+                            <li>
+                                <b>Carbon footprint left behind -&nbsp;</b> {{pollution1.decisions.carbon.description}}
+                            </li>
+                            <li>
+                                <b>Energy utilized by using the fuel -&nbsp;</b>{{pollution1.decisions.energy.description}}
+                            </li>
+                            <li>
+                                <b>Fuel used during the journey(approximately) -&nbsp;</b>
+                                {{pollution1.decisions.fuel_use_during_timeframe.object.value|number:2}}&nbsp;{{pollution1.decisions.fuel_use_during_timeframe.object.units}}
+                            </li>
+                            <li></li>
+                            <li>
+                                <h3 class="pollutionmessage">!!!If you are sharing this ride with others or joining others' ride, you are saving the great deal of non renewable resources!!!</h3>
+                            </li>
+                            <li>
+                                <input type="button" ng-click="closeDetails()" value="Close Details" style="background-color:coral" />
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div ng-show="loading==true" class="imagediv">
+                        <img src="../images/load2.gif" class="load-image" />
+                    </div>
+
+                </div>
+            </fieldset>
+
+        </form>
+
+
+    </div>
+</div>

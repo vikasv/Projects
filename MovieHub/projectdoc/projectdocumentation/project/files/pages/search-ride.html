@@ -1,0 +1,177 @@
+﻿
+<div ng-controller="searchridescontroller">
+    <div class="formcsssearchride" ng-hide="resultsuccess == true">
+        <form>
+            <p ng-show="resultrides.length == 0"><span class="messagecss error">Oops!</span>No results found</p>
+
+            <fieldset>
+                <legend><span class="messagecss"> Route info</span> </legend>
+                <h2>|Enter your search criteria to retrieve matching rides available|</h2>
+
+                <div>
+                    <div>
+                        <div id="map_canvas" class="mapcanvas"></div>
+                    </div>
+                    <div>
+                        <div style="margin:20px">
+                            <div>
+                                <label for="from">Source</label>
+                                <input type="text" id="from" ng-model="searchride.source" />
+                            </div>
+                            <div>
+                                <label for="to">Destination</label>
+                                <input type="text" id="to" ng-model="searchride.destination" />
+                            </div>
+                            <input type="button" href="" class="button" ng-click="calculateRoute()" value="Show on Map!" style="float:left" />
+                            <input type="button" href="" class="button" id="search" ng-click="searchRides()" value="Search Rides" />
+                        </div>
+                        <!-- <p><span ng-show="resultrides.length == 0">No results found</span></p>-->
+
+                    </div>
+                </div>
+            </fieldset>
+
+        </form>
+    </div>
+    <div ng-show="resultsuccess == true" id="pricing-table" style="width:80%">
+        <h2 class="search">Search criteria</h2>
+
+        <p><b>Source - </b>{{searchride.source}} || <b>Destination - </b>{{searchride.destination}}</p>
+        <a href="" ng-click="resultsuccess=false"><b>Modify (+)</b></a>
+    </div>
+    <div ng-show="resultsuccess == true" class="rides">
+
+        <div id="pricing-table" ng-repeat="ride in resultrides track by $index | orderBy : '-created'">
+            <div class="plan">
+                <h3><b>Ride Share</b><span>{{ride.cost/(ride.personcountfilled + 1)|number:2}}</span></h3>
+                <input type="button" class="view easy-modal-open" href="#modal1" ng-click="expandInfo(ride)" value="View" />
+
+                <ul>
+                    <li><b>Ride added on </b>{{ride.created | date:'MM/dd/yyyy HH:mm a'}}</li>
+                    <li><b>Source </b>{{ride.source}}</li>
+                    <li><b>Destination </b>{{ride.destination}}</li>
+                    <li><b>Person Count </b>{{ride.personcount}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="easy-modal" id="modal1">
+        <div class="easy-modal-inner">
+            <h2>Route's Destination - {{viewride.destination}}</h2>
+            <table class=".history">
+                <tbody>
+                    <tr>
+                        <td class="head">Added on</td>
+                        <td>{{viewride.created | date:'MM/dd/yyyy HH:mm a'}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Added by</td>
+                        <td>{{viewride.username}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Time starting</td>
+                        <td>{{viewride.starttime}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Route begins at</td>
+                        <td>{{viewride.source}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Seats filled</td>
+                        <td>{{viewride.personcountfilled}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Seats remaining</td>
+                        <td>{{viewride.personcount - viewride.personcountfilled}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Contact the person</td>
+                        <td>{{viewride.contact}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Current share</td>
+                        <td>{{viewride.cost/(viewride.personcountfilled + 1)|number:2}}</td>
+                    </tr>
+                    <tr>
+                        <td class="people">People you will ride with</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span ng-repeat="p in viewride.people track by $index" style="width:auto">
+                                <input type="button" ng-click="getUserProfile(p)" class="user-modal-open" href="#modal2"
+                                       style="color:white;background-color:#1abc9c;width:auto" value="{{p}}" />
+                            </span>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label ng-show="!currentUser" style="color:crimson">Login to add yourself to the ride!!</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" ng-show="currentUser && !addedride" class="button" ng-click="addpersontoride(viewride)" value="Choose ride" />
+
+                        </td>
+                        <td>
+                            <input type="button" class="button easy-modal-close" value="close" />
+                            {{addedride}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="user-modal" id="modal2">
+        <div class="easy-modal-inner">
+            <h2>{{viewuser.username}}'s Profile</h2>
+            <table class=".history">
+                <tbody>
+                    <tr>
+                        <td>
+                            {{viewusererror}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class ="head">Address</td>
+                        <td>{{viewuser.address1}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{viewuser.address2}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{viewuser.city}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{viewuser.state}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Email ID</td>
+                        <td>{{viewuser.email}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">More about the user</td>
+                        <td>{{viewuser.personalmessage}}</td>
+                    </tr>
+                    <tr>
+                        <td class="head">Car model</td>
+                        <td>{{viewuser.carmodel}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="button user-modal-close" value="close" />
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
