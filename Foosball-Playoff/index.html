@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Foosball - Playoff</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:500,500italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" >
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="client.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="shortcut icon" href="media/ball.ico">
+</head>
+<body>
+<!--<img id="spinner" class="center-block" src="media/ninja.gif">-->
+    <div class="header center"><div style="font-size:32px;padding-left:25%;position:absolute;">The</div>Play<i class="fa fa-futbol-o"></i>ff</div>
+<div id="panel" class="container-fluid">
+
+<div class="row" id="nav-bar">
+    <ul>
+    <li><a href="#" id="reg-nav" class="text-center">Register <i class="fa fa-user"></i></a></li>
+    <li><a href="#" id="sch-nav" class="text-center">Schedule <i class="fa fa-calendar"></i></a></li>
+    <li><a href="#" id="tou-nav" class="text-center">Tournament <i class="fa fa-cog"></i></a></li>
+
+    </ul>
+</div>
+<div id="register">
+    <div class="row">Register below to participate in the Ultimate Foosball Tournament! Teams are selected randomly and schedule will be declared after all the registrations are processed. Stay tuned for further updates and keep practising.</div>
+    <div class="center"><code>Hurry Up! Registration ends 5/9 11:59PM EST</code></div>
+
+
+    <div class="fields center">
+    <form id="form-register" class="form-inline">
+    <input type="text" class="form-control" id="pName" placeholder="Name" required="true">
+    <input type="email" class="form-control" id="pEmail" placeholder="Email" required="true">
+    <button type="submit" class="btn btn-primary" id="register-player"><i class="fa fa-paper-plane"></i> Submit</button>
+    </form>
+    </div>
+    <div id="result" class="row"></div>
+    <div id="players"></div>
+</div>
+    
+<div id="schedule" class="center">
+Will be released shortly!
+<br>
+<img src="media/blob.gif">
+<div class="row table-responsive" id="points"><b>Points Table:</b>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Played</th>
+        <th>Won</th>
+        <th>Lost</th>
+        <th>Goals Scored</th>
+        <th>Goals Conceded</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+        </tr>
+    </tbody>
+</table>
+</div>   
+</div>
+    
+<div id="tournament">
+ <div class="row"><b>Rules: </b>
+     <ul>
+         <li>Depending on the number of participants, all the teams will be divided into two groups</li>
+         <li> Each team will play all the others in their own group</li>
+         <li> Team scoring 10 points before their opponents, is declared a winner</li>
+         <li> For all the group stage matches, each win carries 2 points</li>
+         
+         <li>Top 4 teams will proceed to the Semi-finals</li> 
+         <li>In case of a tie in proceeding to Semi-finals, number of goals scored/conceded is taken into account</li>
+         <li>Finals will be played for 15 points</li>
+         <li><b>Venue:</b> All the matches are to be played in #2012, Cityview</li>
+     </ul>
+</div>
+<div class="row"><img src="media/rod.jpg" class="img-responsive center"></div>
+</div>
+    
+
+
+<div class="row text-right" id="trailer">
+Code &copy Vikas Vellanki - 2016
+</div>
+</div>
+</body>
+</html>
