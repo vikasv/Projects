@@ -1,3 +1,0 @@
-../story/whatisnext.htm?../project/story.txt                                     What is Next?
-homepage.aspx																	 Project home page
-fitnessvideos.aspx																 Fitness videos

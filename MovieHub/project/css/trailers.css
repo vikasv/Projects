@@ -1,0 +1,28 @@
+﻿
+.icon-chevron-right {
+    font-size: 50px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #AF4E4E;
+    cursor: default;
+    background-color: #fff;
+    border: none;
+    border-bottom-color: #ddd;
+    font-size: 14pt;
+}
+
+.nav-tabs > li.active > a:hover{
+    color:orange;
+}
+
+.hyperlink {
+    display: block;
+    height: 50px;
+    color: blue;
+}
+
+.hyperlink:hover {
+    text-decoration:underline;
+    color:blue;
+}

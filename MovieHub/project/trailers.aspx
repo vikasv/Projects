@@ -1,325 +1,172 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="fitnessvideos.aspx.cs" Inherits="project_fitnessvideos" %>
-
-
+<%@ Page Language="C#" AutoEventWireup="true" %>
 
 <!DOCTYPE html>
 <html>
-<head id="Head1" runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Videos</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
-		<link href="css/iconic.css" media="screen" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" media="screen" href="css/bmi.css" type="text/css"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="javascript/jquery.js"></script>
-        <script src="javascript/main.js"></script>
-        <script src="javascript/bmi.js"></script>
-        <link rel="stylesheet" href="css/homepageslides.css" />
-		<script src="javascript/prefix-free.js"></script>
-        <link rel="stylesheet" href="css/videohome.css" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Movies</title>
+    <link rel="icon" type="image/png"
+        href="${pageContext.request.contextPath}/resources/images/logofinal.ico" />
+    <!-- JQuery Libraries -->
+    <link rel="stylesheet"
+        href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css"
+        href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+    <script type="text/javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+
+    <!-- Bootstrap CDNs -->
+    <link rel="stylesheet"
+        href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet"
+        href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <script
+        src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script
+        src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+    <!-- JavaScript File -->
+    <script src="javascript/homePageSearch.js"></script>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="javascript/trailers.js"></script>
+    <link rel="stylesheet" href="css/movieHome.css">
+
+    <link rel="stylesheet" href="css/trailers.css" />
+    <script src="javascript/footer.js"></script>
+    
+
+    <!-- StyleSheet -->
 </head>
 <body>
 
 
-    <nav>
-		<ul class="menu">
-			<li><a href="#"><span class="iconic home"></span> Home</a></li>
-			<li><a href="#"><span class="iconic plus-alt"></span> Videos </a></li>
-			<li><a href="#"><span class="iconic magnifying-glass"></span> Nutrition </a></li>
-			<li><a href="#"><span class="iconic map-pin"></span> Products</a></li>
-			<li><a href="#"><span class="iconic mail"></span> Contact</a></li>
-      
-		</ul>
-		<div class="clearfix"></div>
+   <nav
+		class="navbar navbar-default navbar-inverse navbar-fixed-top drop-shadow"
+		role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="movieHomePage.aspx"><img
+					id="brandImg" style="width: 35px; height: 35px;"
+					src="http://interspire-developers.com/wp-content/uploads/2011/08/interspire_solutions.png"
+					alt=""><font face="MyCustomFont" size="6">MovieHub</font></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+              <li ><a href="movieHomePage.aspx">Home</a></li>
+              <li><a href="inTheatres.aspx">In Theatres</a></li>
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> UpComing <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="comingSoon.aspx">Week Releases</a></li>
+                  <li><a href="inFuture.aspx">Future Releases</a></li>
+                </ul>
+              </li>
+              <li class="active"><a href="trailers.aspx">  Trailer by Genre</a></li>
+             <li><a href="topCollections.aspx">Top Movies</a></li>
+              <li><a href="../Default.aspx">Course Site</a></li>
+            </ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">24x7 Support <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><strong>Mail: </strong>vellanki.v@husky.neu.edu</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><b>Address:</b> 75 St Alphonsus St,<br />
+									Boston, MA, USA </a></li>
+						</ul></li>
+				</ul>
+
+				<div align="right">
+					<div name=searchForm id="searchForm" class="navbar-form">
+						<div id="formGroup" class="form-group" style="display: inline;">
+							<div class="input-group">
+								<input id="searchKey" name="searchKey" type="text"
+									class="typeahead" placeholder="Search Movies"> <span
+									class="input-group-addon"> <i id="searchButton"
+									class="glyphicon glyphicon-search"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
 	</nav>
-    <div id="main-wrapper">
-        <div class="content-holder">
-            
-            <div class="top-message">Check out the workout videos by clicking on it. </div>
-            <div class="banner-pic-pannel">
-                <div id="main-videotabs">
-               <div class="v-tab-holder" id="large-bodypart">
-                   <ul>
 
-                   
-                        <a href="#">
-                            <div class="v-tabs shoulder">
-                                <br />
-                                <br />
-                                SHOULDER
-                            </div>
-                        </a>
-                        <br />
-                        <a href="#">
-                            <div class="v-tabs chest">
-                                <br />
-                                <br />
-                                CHEST
-                            </div>
-                        </a>
-                        <br />
-                        <a href="#">
-                            <div class="v-tabs back">
-                                <br />
-                                <br />
-                                BACK
-                            </div>
-                        </a>
-                        <br />
-                        <a href="#">
-                            <div class="v-tabs legs">
-                                <br />
-                                <br />
-                                LEGS
-                            </div>
-                        </a>
-                        <br />
-                    
+    <div id="mainContent" class="container-fluid">
+        <div id="main-wrapper">
+            <div class="content-holder">
 
-               
-                        <a href="#">
-                            <div class="v-tabs" id="biceps">
-                                <br />
-                                <br />
-                                BICEPS
+                <div class="banner-pic-pannel">
+                    <div id="main-videotabs">
+
+                        <div class="col-md-12">
+                            <div class="col-md-3" >
+                                <div class="span3 bs-docs-sidebar " >
+                                    <ul class="nav nav-tabs nav-stacked" style="border-bottom-color:#ddd">
+                                        <li class="active v-tabs chest"><a href="#"><i class="icon-chevron-right"></i>ROMANTIC </a></li>
+                                        <li class="active v-tabs back"><a href="#"><i class="icon-chevron-right"></i>ACTION </a></li>
+                                        <li class="active v-tabs" id="abs"><a href="#"><i class="icon-chevron-right"></i>COMEDY </a></li>
+                                        <li class="active v-tabs shoulder"><a href="#"><i class="icon-chevron-right"></i>HORROR </a></li>
+                                        <li class="active v-tabs" id="biceps"><a href="#"><i class="icon-chevron-right"></i>SCIENCE FICTION </a></li>
+                                        <li class="active v-tabs" id="triceps"><a href="#"><i class="icon-chevron-right"></i>SPORTS </a></li>
+                                        <li class="active v-tabs legs"><a href="#"><i class="icon-chevron-right"></i>ANIMATED </a></li>
+                                        <li class="active v-tabs" id="calves"><a href="#"><i class="icon-chevron-right" ></i>MYSTERY </a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </a>
-                        <br />
-                        <a href="#">
-                            <div class="v-tabs" id="triceps">
-                                <br />
-                                <br />
-                                TRICEPS
+                            <div class="col-md-9">
+
+                                <div id="spinner" class="spinner" style="display: none">
+                                </div>
+
+                                <div class="populate-video" id="pop-video-id"></div>
                             </div>
-                        </a>
-                        <br />
-                        <a href="#">
-                            <div class="v-tabs" id="abs">
-                                <br />
-                                <br />
-                                ABS
-                            </div>
-                        </a>
-                        <br />
-                        <a href="#">
-                            <div class="v-tabs" id="calves">
-                                <br />
-                                <br />
-                                CALVES
-                            </div>
-                        </a>
-                        <br />
-                    
-                   </div>
-  
-                    <div id="spinner" class="spinner" style="display: none">
-                        
+                        </div>
                     </div>
-                    
-                    <div class="populate-video" id="pop-video-id"></div>
-
-    
-
-                    
                 </div>
+
+                <div class="clear"></div>
+
             </div>
-
-            <div class="clear"></div>
-            
         </div>
+
     </div>
-    <script type="text/javascript">
 
-        $('.populate-video').hide(0);
-        $('#pwd-null-error').hide(0);
-        $('#username-null-error').hide(0);
-        $('#mismatch-error').hide(0);
+    <nav class="navbar navbar-default navbar-fixed-bottom  drop-shadow">
+		<div class="navbar-inner">
+			<div id="footertext" class="container-fluid">
+				<p class="navbar-text pull-right">
+					&copy; Copyright 2015 <b>Vikas Vellanki</b>
+				</p>
+			</div>
+		</div>
+	</nav>
 
-        $('.shoulder').mouseover(function () {        
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("Horror movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('.chest').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("Romantic movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('#biceps').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("Science fiction movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('#triceps').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("sports based movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('.back').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("Action movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('#abs').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("comedy movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('.legs').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("Animated movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $('#calves').mouseover(function () {
-            $('.content-holder').addClass('set-bg-img');
-            SearchYouTube("mystery movie trailers");
-            $('.home-banner-img').hide(0);
-            $('.v-tabs').addClass('onhover-opacity');
-            $(this).removeClass('onhover-opacity');
-        });
-
-        $(document).ready(function () {
-
-            //navigation menu Jquery for the slideup and slideDown effect.
-
-            $('.navigation-menu li .nav-bar').each(function () {
-                $(this).before($(this).clone().removeClass().addClass('hover-bar'));
-            });
-            $('.navigation-menu li').hover(function () {
-                $(this).find('.hover-bar').stop().animate({ marginTop: '0px' }, 200);
-            },
-            function () {
-                $(this).find('.hover-bar').stop().animate({ marginTop: '-63px' }, 200);
-            });
-        });
-
-
-        $('#triceps').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("sports based movie trailers");
-        });
-
-        $('#biceps').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("Science fiction movie trailers");
-        });
-
-        $('#calves').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("mystery movie trailers");
-        });
-
-        $('.shoulder').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("Horror movie trailers");
-        });
-
-        $('.back').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("Action movie trailers");
-        });
-
-        $('.legs').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("Animated movie trailers");
-        });
-
-        $('#abs').click(function () {
-            $('.home-banner-img').hide(0);
-            SearchYouTube("comedy movie trailers");
-        });
-
-        function SearchYouTube(query) {
-            $("#spinner").show(0);
-            $.ajax({
-                url: 'http://gdata.youtube.com/feeds/videos?alt=json-in-script&q=' + query,
-                dataType: 'jsonp',
-                success: function (data) {
-                    
-                    $("#spinner").show(0);
-                    var message = "";
-
-                    if (data.feed.entry.length == null) {
-                        $("#spinner").hide(0);
-                        alert('Data cannot be retreived, try again with new search');
-                    }
-                    else {
-                        for (i = 0; i < data.feed.entry.length; i++) {
-                            message += "<div class='search_item'>";
-                           
-                            message += "<div class='separate'>"
-                           
-                            message += "<a  target='_blank'  href='" + data.feed.entry[i].media$group.media$player[0].url + "'>";
-                            message += "<img width='300px' height='170px' src=" + data.feed.entry[i].media$group.media$thumbnail[2].url + " /></a>";
-                           
-                            message += "</div>"
-                            message += "<div class='separate'>"
-                            
-                            message += "<a target='_blank'  href='" + data.feed.entry[i].media$group.media$player[0].url + "'>" + data.feed.entry[i].media$group.media$title.$t + "</a><br/>";
-                            message += "<table class='top-gap'>"
-                            message += "<tr>"
-                            message += "<td class='row-left'>"
-                            message += "<b>Duration :  </b>" + data.feed.entry[i].media$group.yt$duration.seconds + " secs<br/>";
-                            message += "</td>"
-                            message += "<td class='row-left'>"
-                            message += "<b>Category :  </b>" + data.feed.entry[i].media$group.media$category[0].label + "<br/>";
-                            message += "</td>"
-                            message += "<td class='row-left'>"
-                            message += "<b>Views : </b>" + data.feed.entry[i].yt$statistics.viewCount + " views<br/>";
-                            message += "</td>"
-                            message += "<td class='row-left'>"
-                            message += "<b>Rating : </b>" + data.feed.entry[i].gd$rating.average + " / 5<br/>";
-                            message += "</td>"
-                            message += "</tr>"
-                            message += "</table>"
-                           
-                            
-                            message += "</div>"
-                            
-                            message += "</div>";
-                            
-                        }
-
-                        document.getElementById("pop-video-id").innerHTML = message;
-                        $("#spinner").hide(0);
-                        $('.populate-video').show(0);
-                    }
-                  
-                },
-                error: function () {
-                    alert("Error loading the specified video");
-                }
-            });
-        }
-
-
-    </script>
 </body>
 </html>
-
-
-                       
